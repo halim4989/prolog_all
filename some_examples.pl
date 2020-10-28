@@ -10,7 +10,7 @@ reverse_writelist([H|T]) :- reverse_writelist(T),write(H).  /* Recursive case: *
 
 /**************/
 
-/*print odd, press ; */
+/*prints odd number, press ; */
 odd(1).
 odd(N) :- odd(M), N is M+2.
 
@@ -32,7 +32,7 @@ len([_|T],N) :- len(T,M),N is M+1.
 
 /*************/
 
-/*make list from by user input*/
+/*make list by user input*/
 get_symptoms(Symptoms) :-
     write('Enter Symptom: ' ),
     read_string(user, "\n", "\r", _, Response),
@@ -46,27 +46,22 @@ get_symptoms(Symptoms) :-
     ).
 
 /**************/
+
 /* acts like prolog global variable increment  or Decrement */
 
-
-:- dynamic a/1,b/1,counter/1.
+:- dynamic a/1,counter/1.
 
 counter(1).
 a(1).
-b(1).
-
-go:-
-		a(X),
-		write(X),nl.
 				
-do(Delta):-                 /* do(1) or do(+1) or do(-1)[for Decrement] */
+do(Delta):-                		 /* do(1) or do(+1) or do(-1)[for Decrement] */
 		a(Value),               
 		Value2 is Value+Delta,
 		retractall(a(_)),
 		assert(a(Value2)).      
 
 
-increment_counter(Delta) :-   /* same */
+increment_counter(Delta) :-  			 /* same */
 		( counter(Value),
 		Value2 is Value+Delta
 		),
